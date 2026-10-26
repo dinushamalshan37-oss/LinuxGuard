@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="LinuxGuard: a privacy-first Linux security and performance monitoring dashboard.">
+  <title>LinuxGuard | System Intelligence</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#overview" aria-label="LinuxGuard home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M18 3 31 8v10c0 8.7-5.8 13.8-13 16C10.8 31.8 5 26.7 5 18V8L18 3Z" stroke="currentColor" stroke-width="2.5"/><path d="m11.4 18.6 4.2 4.2 9-10" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span>Linux<span class="brand-accent">Guard</span><small>SYSTEM INTELLIGENCE</small></span>
+      </a>
+      <p class="side-label">WORKSPACE</p>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#overview"><span>◈</span> Overview</a>
+        <a class="nav-link" href="#performance"><span>▥</span> Performance</a>
+        <a class="nav-link" href="#security"><span>◇</span> Security Audit</a>
+        <a class="nav-link" href="#processes"><span>☷</span> Processes</a>
+        <a class="nav-link" href="#alerts"><span>♧</span> Event Log</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="side-system-icon">⌘</div>
+        <p class="tiny-cap">MONITORED MACHINE</p>
+        <p id="sidebar-host" class="side-host">Connecting...</p>
+        <div class="side-divider"></div>
+        <div class="side-foot"><span class="status-dot"></span> Local-only mode <span class="version">v1.0</span></div>
+      </div>
+    </aside>
+    <main class="main-content" id="overview">
+      <header class="topbar">
+        <div class="breadcrumbs"><span>Workspace</span><span class="slash">/</span><strong>Overview</strong></div>
+        <div class="top-actions"><span id="clock-label" class="date-label">--</span><span id="connection-pill" class="connection-pill"><i class="status-dot"></i><span id="connection-text">Connecting</span></span></div>
+      </header>
+      <div class="content-wrap">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> LINUX CONTROL CENTER</div>
+            <h1>System <em>Overview<span>.</span></em></h1>
+            <p>Real-time performance insights, anomaly signals, and read-only security checks — all from your local machine.</p>
+          </div>
+          <div class="hero-decor" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-glyph">⌘</div></div>
+        </section>
+        <div class="section-heading" aria-label="Overview metrics"><div><h2>Live system metrics</h2><span>Updated automatically every 5 seconds</span></div><span class="live-caption"><i class="status-dot"></i> LIVE TELEMETRY</span></div>
+        <section class="metrics-grid" aria-label="System resource usage">
+          <article class="metric-card"><div class="metric-top"><span>CPU Usage</span><span class="metric-icon cpu-icon">◉</span></div><div class="metric-content"><strong id="metric-cpu" class="metric-value">--<small>%</small></strong><div class="ring cpu-ring" id="ring-cpu"><div class="ring-hole">CPU</div></div></div><div class="metric-bottom"><span id="cpu-note">Collecting metrics</span><span class="metric-trend">↗</span></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Memory</span><span class="metric-icon memory-icon">▤</span></div><div class="metric-content"><strong id="metric-memory" class="metric-value">--<small>%</small></strong><div class="ring memory-ring" id="ring-memory"><div class="ring-hole">RAM</div></div></div><div class="metric-bottom"><span id="memory-note">Live memory use</span><span class="metric-trend">↗</span></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Disk Storage</span><span class="metric-icon disk-icon">▣</span></div><div class="metric-content"><strong id="metric-disk" class="metric-value">--<small>%</small></strong><div class="ring disk-ring" id="ring-disk"><div class="ring-hole">DISK</div></div></div><div class="metric-bottom"><span id="disk-note">Root filesystem</span><span class="metric-trend">↗</span></div></article>
+          <article class="metric-card health-card"><div class="metric-top"><span>System Health</span><span class="metric-icon health-icon">✦</span></div><div class="metric-content"><strong id="metric-score" class="metric-value">--<small>/100</small></strong><div class="health-spark">✳</div></div><div class="metric-bottom"><span id="health-note">Evaluating status</span><span class="health-status" id="health-status">CHECKING</span></div></article>
+        </section>
+        <section class="overview-grid" id="performance">
+          <article class="panel chart-panel">
+            <div class="panel-header"><div><div class="eyebrow-small">SYSTEM PERFORMANCE</div><h2>Resource Activity</h2><p>Recent resource consumption over time</p></div><div class="legend"><span><i class="legend-dot legend-cpu"></i>CPU</span><span><i class="legend-dot legend-memory"></i>Memory</span></div></div>
+            <div class="chart-wrap"><div class="chart-labels"><span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span></div><svg id="performance-chart" viewBox="0 0 820 240" preserveAspectRatio="none" role="img" aria-label="Line chart of CPU and memory usage"><g id="chart-grid"></g><path id="cpu-area" fill="url(#cpuGradient)"></path><polyline id="cpu-line" fill="none" stroke="#65e7b5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline><polyline id="memory-line" fill="none" stroke="#6da6ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline><defs><linearGradient id="cpuGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#65e7b5" stop-opacity=".18"/><stop offset="100%" stop-color="#65e7b5" stop-opacity="0"/></linearGradient></defs></svg></div>
+            <div class="chart-footer"><span id="chart-range">Waiting for samples</span><span id="chart-peak">CPU peak: --</span></div>
+          </article>
+          <article class="panel machine-panel"><div class="panel-header"><div><div class="eyebrow-small">HOST DETAILS</div><h2>Machine Info</h2><p>Current Linux environment</p></div><span class="panel-decoration">⌘</span></div><div class="machine-row"><span>Hostname</span><strong id="info-host">--</strong></div><div class="machine-row"><span>Operating system</span><strong id="info-os">--</strong></div><div class="machine-row"><span>Kernel</span><strong id="info-kernel">--</strong></div><div class="machine-row"><span>CPU cores</span><strong id="info-cores">--</strong></div><div class="machine-row"><span>System uptime</span><strong id="info-uptime">--</strong></div><div class="machine-row"><span>Network ↓ / ↑</span><strong id="info-network">--</strong></div></article>
+        </section>
+        <section class="security-grid" id="security">
+          <article class="panel security-panel"><div class="panel-header"><div><div class="eyebrow-small">SECURITY CENTER</div><h2>Local Security Audit</h2><p>Checks based on visible OS information</p></div><button class="scan-button" id="run-scan" type="button">↻ Run scan</button></div><div class="security-stats"><div class="audit-counter"><span>Failed SSH logins <small>(1h)</small></span><strong id="ssh-failures">--</strong><small id="ssh-note">Run a scan to check journal access</small></div><div class="audit-counter"><span>All-interface listeners</span><strong id="all-listeners">--</strong><small id="ports-note">Review network-facing services</small></div></div><div class="audit-findings"><div class="small-heading">Audit findings</div><ul id="scan-findings"><li>Click “Run scan” to perform a local, read-only audit.</li></ul></div></article>
+          <article class="panel insight-panel"><div class="panel-header"><div><div class="eyebrow-small">SMART INSIGHTS</div><h2>System Guidance</h2><p>Practical resource recommendations</p></div><span class="insight-star">✳</span></div><div id="recommendations" class="recommendations"><div class="recommendation"><span class="insight-index">01</span><p>Insights appear after the first telemetry sample.</p></div></div><div class="insight-footer">Resource signals are indicators, not a malware verdict.</div></article>
+        </section>
+        <section class="bottom-grid">
+          <article class="panel" id="processes"><div class="panel-header"><div><div class="eyebrow-small">PROCESS MANAGER</div><h2>Top Processes</h2><p>Sorted by current resource usage</p></div><span class="mini-badge">READ ONLY</span></div><div class="table-scroll"><table><thead><tr><th>PROCESS</th><th>PID</th><th>CPU</th><th>RAM</th></tr></thead><tbody id="process-table"><tr><td colspan="4" class="empty">Collecting process information...</td></tr></tbody></table></div></article>
+          <article class="panel" id="alerts"><div class="panel-header"><div><div class="eyebrow-small">ACTIVITY & ALERTS</div><h2>Event Log</h2><p>Persisted anomaly and security signals</p></div><span class="mini-badge">SQLITE</span></div><div id="alerts-list" class="alerts-list"><div class="empty-state">No events recorded yet.</div></div></article>
+        </section>
+        <footer class="footer"><span>© LinuxGuard • Open-source student project</span><span>Private by design · <strong>127.0.0.1</strong> only</span></footer>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
