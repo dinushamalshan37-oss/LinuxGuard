@@ -1,6 +1,6 @@
 'use strict';
 
-const $ = (id) => document.getElementById(id);
+const $ = (id) => document.getElementById(id); 
 const svgNS = 'http://www.w3.org/2000/svg';
 const formatter = new Intl.DateTimeFormat(undefined, {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'});
 
@@ -8,7 +8,7 @@ function setText(id, value) { const node=$(id); if(node) node.textContent = Stri
 function numeric(value) { const n=Number(value); return Number.isFinite(n) ? n : 0; }
 function percent(value) { return `${numeric(value).toFixed(1)}%`; }
 function shortOS(value) { return String(value || 'Unknown').slice(0, 45); }
-function formatUptime(seconds) {
+function formatUptime(seconds) { 
   const s=Math.max(0,Math.floor(numeric(seconds)));
   const days=Math.floor(s/86400), hrs=Math.floor((s%86400)/3600), mins=Math.floor((s%3600)/60);
   return `${days}d ${hrs}h ${mins}m`;
