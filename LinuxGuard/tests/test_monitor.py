@@ -1,9 +1,9 @@
 import tempfile
 import unittest
-from pathlib import Path
+from pathlib import Path 
 
 from monitor import LinuxMonitor, recommendations
-from storage import Store
+from storage import Store 
 
 
 class MonitoringTests(unittest.TestCase):
